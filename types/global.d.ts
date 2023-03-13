@@ -13,7 +13,6 @@ declare module '*.styl';
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    TARO_ENV: 'weapp'
+    TARO_ENV: 'weapp';
   }
 }
-
