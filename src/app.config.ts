@@ -1,15 +1,19 @@
+const PAGE_PRE_FIX = (page: string) => `pages/${page}/index`;
+const PAGE_MAIN = PAGE_PRE_FIX('main');
+const PAGE_MINE = PAGE_PRE_FIX('mine');
+
 export default defineAppConfig({
-  pages: ['pages/main/index', 'pages/mine/index'],
+  pages: [PAGE_MAIN, PAGE_MINE],
   window: {
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#dc143c',
+    navigationBarBackgroundColor: '#1677ff',
     navigationBarTitleText: '微信小程序',
     navigationBarTextStyle: 'white',
   },
   tabBar: {
     // custom: true,
     color: '#000',
-    selectedColor: '#dc143c',
+    selectedColor: '#1677ff',
     backgroundColor: '#fff',
     list: [
       {

@@ -1,0 +1,64 @@
+/* 绝对布局全覆盖常用于对话框的遮罩层
+ * ${background} 背景色
+ * ${z-index} 所在层级
+ * ${opacity} 透明度 
+ */
+@mixin allCover($background: black, $z-index: 100, $opacity: 1) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: $z-index;
+  background: $background;
+  opacity: $opacity;
+}
+
+/* 布局文字全居中
+ * ${textAlign} 文字对齐方式
+ */
+@mixin locInCenter($textAlign: center) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: $textAlign;
+}
+
+/* 单行省略号 */
+@mixin oneLineEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 多行省略号，仅对webkit内核浏览器有效
+ * ${line} 需要显示的行 */
+@mixin multiLineEllipsis($line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+/* 多行省略号，需知道长宽及分几行
+ * ${width} 宽
+ * ${height} 高
+ * ${line} 分几行 
+ * ${textSelector} 文本节点选择器 
+ * ${ellSelector} 省略号节点选择器 */
+@mixin multiLineEllipsisByWidthAndHeight($width, $height, $line, $textSelector, $ellSelector) {
+  #{$textSelector} {
+    display: inline-block;
+    height: $height;
+    width: $width;
+    line-height: $height/$line;
+    overflow: hidden;
+  }
+
+  #{$ellSelector}:after {
+    display: inline;
+    content: '...';
+  }
+}

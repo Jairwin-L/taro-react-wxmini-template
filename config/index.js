@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'taroWxMiniDemo',
+  projectName: 'taro-react-wxmini-template',
   date: '2023-3-13',
   designWidth: 750,
   deviceRatio: {
@@ -19,6 +19,9 @@ const config = {
   compiler: 'webpack5',
   cache: {
     enable: false, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+  },
+  sass: {
+    resource: ['src/styles/variable.scss', 'src/styles/mixins.scss'],
   },
   mini: {
     postcss: {

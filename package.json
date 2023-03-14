@@ -2,7 +2,7 @@
   "name": "taro-react-wxmini-template",
   "version": "1.0.0",
   "private": true,
-  "description": "taroWxMiniDemo",
+  "description": "taro-react-wxmini-template",
   "templateInfo": {
     "name": "default",
     "typescript": true,
