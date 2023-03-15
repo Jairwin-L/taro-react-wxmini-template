@@ -1,1 +1,3 @@
-export const PAGES: [string, string] = [`pages/main/index`, `pages/mine/index`];
+import { getPagePreFix } from '../utils/page-path';
+
+export const PAGES: [string, string] = [getPagePreFix('main'), `pages/mine/index`];

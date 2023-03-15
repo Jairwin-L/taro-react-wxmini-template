@@ -1,6 +1,5 @@
 const config = {
   projectName: 'taro-react-wxmini-template',
-  date: '2023-3-13',
   designWidth: 750,
   deviceRatio: {
     640: 2.34 / 2,
