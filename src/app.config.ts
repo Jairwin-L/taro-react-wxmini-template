@@ -1,9 +1,7 @@
-const PAGE_PRE_FIX = (page: string) => `pages/${page}/index`;
-const PAGE_MAIN = PAGE_PRE_FIX('main');
-const PAGE_MINE = PAGE_PRE_FIX('mine');
+import { PAGES } from './constants/page';
 
 export default defineAppConfig({
-  pages: [PAGE_MAIN, PAGE_MINE],
+  pages: PAGES,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#1677ff',

@@ -4,7 +4,7 @@ import './index.scss';
 export default function Main() {
   return (
     <>
-      <View className='main'>首页</View>
+      <View className="main">首页</View>
       <View>
         {Array(50)
           .fill('1')
