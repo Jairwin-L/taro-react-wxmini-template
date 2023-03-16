@@ -1,3 +1,4 @@
 export { default as getCascadeData } from './cascade-data';
-export { default as subPageNavigate } from './navigate';
+export { subPageNavigate } from './navigate';
+export { navigate } from './navigate';
 export { default as objectToParams } from './object';

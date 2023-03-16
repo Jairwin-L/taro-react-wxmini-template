@@ -5,3 +5,5 @@ interface IBaseSelectOption {
 }
 
 type QueryStringKey = 'id';
+
+type IPagePreFix = 'main' | 'mine' | 'address' | 'collection' | 'change-password' | 'address/add';

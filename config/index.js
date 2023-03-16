@@ -28,6 +28,10 @@ const config = {
     data: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`,
   },
   mini: {
+    // TODO:可绕过，也可以找出
+    miniCssExtractPluginOption: {
+      ignoreOrder: true,
+    },
     postcss: {
       pxtransform: {
         enable: true,

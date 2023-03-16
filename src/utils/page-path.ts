@@ -1,5 +1,3 @@
-export function getPagePreFix(
-  page: 'main' | 'mine' | 'address' | 'collection' | 'change-password',
-) {
+export function getPagePreFix(page: IPagePreFix) {
   return `pages/${page}/index`;
 }
