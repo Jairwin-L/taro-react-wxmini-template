@@ -1,7 +1,13 @@
-import { PAGES } from './constants/page';
+import { PAGES, SUB_PAGES } from './constants/page';
 
 export default defineAppConfig({
   pages: PAGES,
+  subpackages: [
+    {
+      root: 'sub-pages',
+      pages: SUB_PAGES,
+    },
+  ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#1677ff',
