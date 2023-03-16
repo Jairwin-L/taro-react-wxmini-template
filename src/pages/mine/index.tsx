@@ -1,5 +1,5 @@
 import { CellGroup, Cell, Avatar } from '@nutui/nutui-react-taro';
-import { subPageNavigate } from '../../utils/navigate';
+import { subPageNavigate } from '../../utils';
 import { CELL_LIST } from '../../constants/mine';
 import './index.scss';
 

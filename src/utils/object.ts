@@ -1,4 +1,4 @@
-export function objectToParams<T>(obj: T) {
+function objectToParams<T>(obj: T) {
   const params = Object.keys(obj || {}) || [];
   if (params.length <= 0) return '';
   let value = '?';
@@ -7,3 +7,5 @@ export function objectToParams<T>(obj: T) {
   });
   return value.slice(0, -1);
 }
+
+export default objectToParams;

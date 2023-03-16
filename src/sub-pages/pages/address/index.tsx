@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { View } from '@tarojs/components';
 import { Picker, Cell } from '@nutui/nutui-react-taro';
 import { useQueryString } from '../../../hooks';
-import { getCascadeData } from '../../../utils';
 import './index.scss';
+import { getCascadeData } from '../../../utils';
 
 const option = getCascadeData();
 

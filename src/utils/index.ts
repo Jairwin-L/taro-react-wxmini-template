@@ -1,4 +1,3 @@
-export { getCascadeData } from './cascade-data';
-export { subPageNavigate } from './navigate';
-export { objectToParams } from './object';
-export { getPagePreFix } from './page-path';
+export { default as getCascadeData } from './cascade-data';
+export { default as subPageNavigate } from './navigate';
+export { default as objectToParams } from './object';

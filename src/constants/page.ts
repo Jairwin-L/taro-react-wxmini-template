@@ -1,4 +1,4 @@
-import { getPagePreFix } from '../utils';
+import { getPagePreFix } from '../utils/page-path';
 
 export const PAGES: [string, string] = [getPagePreFix('main'), getPagePreFix('mine')];
 export const SUB_PAGES: string[] = [

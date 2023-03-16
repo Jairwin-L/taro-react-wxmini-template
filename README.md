@@ -2,6 +2,8 @@
 
 taro-react 微信小程序模版
 
+## Usage
+
 Install
 
 ```bash
@@ -13,3 +15,7 @@ Run
 ```bash
 pnpm dev
 ```
+
+## taro 问题记录
+
+https://www.yuque.com/jairwin/blog/taro-problem-log
