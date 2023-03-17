@@ -1,0 +1,15 @@
+$clientHeight: 160px;
+$desktopHeight: 100px;
+
+.custom-tab-bar-placeholder {
+  height: $clientHeight;
+}
+.custom-tab-bar-placeholder-devtools {
+  height: $desktopHeight;
+}
+.custom-tab-bar-placeholder-mac {
+  height: $desktopHeight;
+}
+.custom-tab-bar-placeholder-ios {
+  height: $clientHeight;
+}

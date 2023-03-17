@@ -57,7 +57,7 @@ const config = {
       enable: true,
     },
     prerender: {
-      match: ['pages/main/**', 'pages/mine/**'], // 所有以 `pages/shop/` 开头的页面都参与 prerender
+      match: ['pages/**/**', 'sub-pages/pages/**/**'], // 所有以 `pages/shop/` 开头的页面都参与 prerender
     },
     // TODO:可绕过，也可以找出
     miniCssExtractPluginOption: {

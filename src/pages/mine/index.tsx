@@ -1,4 +1,5 @@
 import { CellGroup, Cell, Avatar } from '@nutui/nutui-react-taro';
+import { CustomTabbarPlaceholder } from '../../components';
 import { subPageNavigate } from '../../utils';
 import { CELL_LIST } from '../../constants/mine';
 import './index.scss';
@@ -20,6 +21,7 @@ export default function Mine() {
           return <Cell title={item.label} isLink onClick={() => onCell(item)} />;
         })}
       </CellGroup>
+      <CustomTabbarPlaceholder />
     </>
   );
 }

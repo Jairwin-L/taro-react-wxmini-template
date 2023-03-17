@@ -1,5 +1,6 @@
 import { View } from '@tarojs/components';
 import { Button } from '@nutui/nutui-react-taro';
+import { CustomTabbarPlaceholder } from '../../components';
 import './index.scss';
 
 export default function Main() {
@@ -17,6 +18,7 @@ export default function Main() {
           })}
       </View>
       <View>底部</View>
+      <CustomTabbarPlaceholder />
     </>
   );
 }
