@@ -7,6 +7,7 @@ declare module '*.jpeg';
 declare module '*.svg';
 declare module '*.scss';
 declare module '*.sass';
+declare module 'flyio';
 
 declare namespace NodeJS {
   interface ProcessEnv {

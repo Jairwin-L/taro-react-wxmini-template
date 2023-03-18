@@ -1,5 +1,5 @@
 import { PLATFORM } from '../constants';
-import { getSystemInfoSync } from '@tarojs/taro';
+import { getSystemInfoSync, getAccountInfoSync } from '@tarojs/taro';
 /**
  * @module getSystemInfo
  * @description 获取系统信息
@@ -35,5 +35,18 @@ function getCustomTabbarClass() {
   }
   return customTabbarClass;
 }
-
-export { getSystemInfo, getCustomTabbarClass };
+/**
+ * @module getEnvVersion
+ * @description 获取当前帐号所属环境，默认正式环境
+ */
+function getEnvVersion(): IEnvVersion {
+  try {
+    const { miniProgram } = getAccountInfoSync();
+    const { envVersion } = miniProgram || {};
+    return envVersion || 'release';
+  } catch (error: unknown) {
+    console.log(`Taro.getAccountInfoSync:error----->：`, error);
+    return 'release';
+  }
+}
+export { getSystemInfo, getCustomTabbarClass, getEnvVersion };
