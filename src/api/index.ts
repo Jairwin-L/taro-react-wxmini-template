@@ -2,11 +2,6 @@ import { getStorageSync } from '@tarojs/taro';
 import Fly from 'flyio/dist/npm/wx';
 import { API_URL } from './config';
 
-export enum ERROR_TYPE {
-  SYSTEM = '系统异常',
-  SERVICE = '服务异常',
-}
-
 const fly = new Fly();
 
 fly.config.timeout = 3500;
@@ -23,7 +18,7 @@ fly.interceptors.response.use(
   (response) => {
     const data = response?.data || {};
     if (!data?.success) {
-      console.log(`----->：`, data?.success);
+      // TODO:
     }
     return data;
   },

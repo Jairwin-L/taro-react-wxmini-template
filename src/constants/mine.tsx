@@ -1,4 +1,4 @@
-export const CELL_LIST = [
+const CELL_LIST = [
   {
     label: '收藏',
     value: 'collection',
@@ -12,3 +12,5 @@ export const CELL_LIST = [
     value: 'change-password',
   },
 ];
+
+export { CELL_LIST };

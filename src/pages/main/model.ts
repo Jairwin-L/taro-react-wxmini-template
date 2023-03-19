@@ -1,17 +1,30 @@
+import { useState } from 'react';
+import { useDidShow } from '@tarojs/taro';
 import { query } from '../../api/modules/biz';
-import { useEffect, useState } from 'react';
 
-export function useModel() {
+function useModel() {
+  const [loading, setLoading] = useState<boolean>(true);
   const [resp, setResp] = useState<IBaseResp<IQueryBiz.Resp>>();
-  const fetchMain = async () => {
+  const fetchModel = async () => {
+    setLoading(true);
     const response = await query({
       pageIndex: 1,
       pageSize: 1,
     });
+    setLoading(false);
     setResp(response);
   };
-  useEffect(() => {
-    fetchMain();
-  }, []);
-  return resp || {};
+  const onRefetch = () => {
+    fetchModel();
+  };
+  useDidShow(() => {
+    fetchModel();
+  });
+  return {
+    ...resp,
+    loading,
+    onRefetch,
+  };
 }
+
+export default useModel;

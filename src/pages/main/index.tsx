@@ -1,32 +1,27 @@
 import { View } from '@tarojs/components';
 import { Button } from '@nutui/nutui-react-taro';
-import { useModel } from './model';
-import { CustomTabbarPlaceholder } from '../../components';
+import { CustomTabbarPlaceholder, PageLayout } from '../../components';
+import useModel from './model';
 import './index.scss';
 
 export default function Main() {
   const model = useModel();
-  console.log(`model----->：`, model);
+  const { data } = model;
   return (
     <>
-      <View className="main">首页</View>
-      <View>
-        {model?.data?.list?.map((item) => {
-          /* @ts-ignore TODO: */
-          return <View key={item.id}>{item.title}</View>;
-        })}
-      </View>
-      <Button type="primary" className="btn">
-        主要按钮
-      </Button>
-      <View>
-        {Array(50)
-          .fill('1')
-          .map((item) => {
-            return <View key={item}>{item}</View>;
+      <PageLayout useModel={model}>
+        <View className="main">首页</View>
+        <View>
+          {data?.list?.map((item) => {
+            // @ts-ignore TODO:
+            return <View key={item.id}>{item.title}</View>;
           })}
-      </View>
-      <View>底部</View>
+        </View>
+        <Button type="primary" className="btn">
+          主要按钮
+        </Button>
+        <View>底部</View>
+      </PageLayout>
       <CustomTabbarPlaceholder />
     </>
   );
