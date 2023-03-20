@@ -4,6 +4,7 @@ export const PAGES: [string, string] = [getPagePreFix('main'), getPagePreFix('mi
 export const SUB_PAGES: string[] = [
   getPagePreFix('address'),
   getPagePreFix('address/add'),
+  getPagePreFix('address/edit'),
   getPagePreFix('collection'),
   getPagePreFix('change-password'),
 ];

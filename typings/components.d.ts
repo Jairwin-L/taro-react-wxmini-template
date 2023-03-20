@@ -18,3 +18,7 @@ interface IPageLayout {
 interface ILoading {
   text?: string;
 }
+
+interface FormConfig {
+  id?: number;
+}

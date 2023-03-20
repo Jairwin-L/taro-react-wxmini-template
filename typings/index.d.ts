@@ -6,6 +6,13 @@ interface IBaseSelectOption {
 
 type QueryStringKey = 'id';
 
-type IPagePreFix = 'main' | 'mine' | 'address' | 'collection' | 'change-password' | 'address/add';
+type IPagePreFix =
+  | 'main'
+  | 'mine'
+  | 'address'
+  | 'collection'
+  | 'change-password'
+  | 'address/add'
+  | 'address/edit';
 
 type IEnvVersion = 'release' | 'trial' | 'develop';

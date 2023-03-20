@@ -1,4 +1,4 @@
-import { navigateTo } from '@tarojs/taro';
+import { navigateTo, navigateBack } from '@tarojs/taro';
 import objectToParams from './object';
 
 // 统一非tabbar页面跳转
@@ -15,5 +15,14 @@ function subPageNavigate<T>(url: string, obj?: T): Promise<TaroGeneral.CallbackR
     url: `../../sub-pages/pages/${url}/index${params}`,
   });
 }
+/**
+ * @module goBack
+ * @description 返回上一页
+ */
+function goBack(delta = 0) {
+  navigateBack({
+    delta,
+  });
+}
 
-export { navigate, subPageNavigate };
+export { navigate, subPageNavigate, goBack };

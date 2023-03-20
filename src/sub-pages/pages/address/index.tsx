@@ -52,7 +52,7 @@ export default function Address() {
                     <Text className="address_detail">{getCodeToText(item.code)}</Text>
                   </View>
                   <View className="address_action">
-                    <Text onClick={() => navigate('address/add', { id: item.id })}>修改</Text>
+                    <Text onClick={() => navigate('address/edit', { id: item.id })}>修改</Text>
                     <Text onClick={() => onDelete(item)}>X</Text>
                   </View>
                 </View>

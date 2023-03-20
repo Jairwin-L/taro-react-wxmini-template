@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDidShow, useDidHide } from '@tarojs/taro';
-import { query } from '../../../api/modules/address';
+import { show } from '../../../../api/modules/address';
 
 function useModel() {
   let didCancel = false;
@@ -9,9 +9,8 @@ function useModel() {
   const [didShow, setDidShow] = useState<boolean>(false);
   const fetchModel = async () => {
     setLoading(true);
-    const response = await query({
-      pageIndex: 1,
-      pageSize: 1,
+    const response = await show({
+      id: 12312,
     });
     if (didShow && !didCancel) {
       setLoading(false);

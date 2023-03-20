@@ -12,6 +12,9 @@ declare namespace IQueryAddress {
   interface Param {
     name: string;
   }
+  interface DetailParam {
+    id: number;
+  }
   interface EditParam extends Param {
     id: number;
   }

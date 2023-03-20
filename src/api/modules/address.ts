@@ -20,9 +20,14 @@ export async function query(
   }
 }
 // 详情
-export async function show(params: IQueryAddress.Param): Promise<IBaseResp<IQueryAddress.Resp>> {
+export async function show(
+  params: IQueryAddress.DetailParam,
+): Promise<IBaseResp<IQueryAddress.Resp>> {
   try {
-    const res = await apiRequest.get<IQueryAddress.Resp, IQueryAddress.Param>(ADDRESS.SHOW, params);
+    const res = await apiRequest.get<IQueryAddress.Resp, IQueryAddress.DetailParam>(
+      ADDRESS.SHOW,
+      params,
+    );
     return res;
   } catch (error) {
     console.log(`get:${ADDRESS.SHOW}----->：`, error);
