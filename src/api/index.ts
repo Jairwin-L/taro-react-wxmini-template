@@ -1,5 +1,6 @@
-import { getStorageSync } from '@tarojs/taro';
+import Taro, { getStorageSync } from '@tarojs/taro';
 import Fly from 'flyio/dist/npm/wx';
+import { DEFAULT_ERROR_MSG, SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from './../constants/api';
 import { API_URL } from './config';
 
 const fly = new Fly();
@@ -16,11 +17,30 @@ fly.interceptors.request.use((request) => {
 
 fly.interceptors.response.use(
   (response) => {
-    const data = response?.data || {};
-    if (!data?.success) {
-      // TODO:
+    const { data, request } = response;
+    const result = data || {};
+    const { method } = request || {};
+    if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+      if (!result?.success) {
+        let errorMsg = '';
+        // showToast无法提示超过7个字的内容，故特殊处理
+        if (data.msg.length > 7) {
+          errorMsg = DEFAULT_ERROR_MSG;
+        } else {
+          errorMsg = data.msg || SYSTEM_ERROR_MSG;
+        }
+        Taro.showToast({
+          title: errorMsg,
+          icon: 'error',
+        });
+      } else {
+        Taro.showToast({
+          title: data.msg || SYSTEM_SUCCESS_MSG,
+          icon: 'success',
+        });
+      }
     }
-    return data;
+    return result;
   },
   (error: any) => {
     console.error('[EXCEPTION/interceptors] response error:%j', error);
@@ -59,19 +79,24 @@ class ApiRequest {
       resolve(response);
     });
   }
-  async post<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
+  async post<Resp, Param>(url: string, params: Param): Promise<Resp> {
     const response = await fly.post(`${this.BASE_URL}${url}`, params);
     return new Promise((resolve) => {
       resolve(response);
     });
   }
-  async delete<Resp, Param>(url: string, id: Param): Promise<IBaseResp<Resp>> {
-    const response = await fly.delete(`${this.BASE_URL}${url}`, id);
+  async delete<Resp, Param>(url: string, params: Param): Promise<Resp> {
+    const { id } = params as Param & {
+      id: string;
+    };
+    const response = await fly.delete(`${this.BASE_URL}${url}`, {
+      id,
+    });
     return new Promise((resolve) => {
       resolve(response);
     });
   }
-  async put<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
+  async put<Resp, Param>(url: string, params: Param): Promise<Resp> {
     const response = await fly.put(`${this.BASE_URL}${url}`, params);
     return new Promise((resolve) => {
       resolve(response);

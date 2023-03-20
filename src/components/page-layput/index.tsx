@@ -1,3 +1,4 @@
+import { SYSTEM_ERROR_MSG } from '../../constants/api';
 import { Empty, Button } from '@nutui/nutui-react-taro';
 import AutoCenter from '../auto-center';
 import Loading from '../loading';
@@ -11,7 +12,7 @@ export default function PageLayout(props: IPageLayout) {
   if (!loading && !success) {
     return (
       <AutoCenter>
-        <Empty image="error" description={msg}>
+        <Empty image="error" description={msg || SYSTEM_ERROR_MSG}>
           <Button icon="refresh" type="primary" onClick={onRefetch && onRefetch}>
             重试
           </Button>

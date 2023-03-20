@@ -1,4 +1,4 @@
-export { default as getCascadeData } from './cascade-data';
+export { getCascadeData } from './cascade-data';
 export { subPageNavigate } from './navigate';
 export { navigate } from './navigate';
 export { getCustomTabbarClass } from './taro-system';

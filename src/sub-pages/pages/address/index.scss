@@ -1,3 +1,47 @@
+.address_list {
+  padding: 20px;
+  .address_ul {
+    .address_li {
+      display: flex;
+      align-items: center;
+      background: $white;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 12px #ebedf0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .address_content {
+        flex: 1;
+        .address_content_info {
+          font-size: 30px;
+          .address_name {
+            margin-right: 20px;
+          }
+        }
+        .address_detail {
+          font-size: 30px;
+        }
+      }
+      .address_action {
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        .check_icon {
+          color: $primary;
+          margin-bottom: 20px;
+        }
+        .delete_icon {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+.placeholder-tool {
+  height: 100px;
+}
 .button-add {
   height: 120px;
   display: flex;

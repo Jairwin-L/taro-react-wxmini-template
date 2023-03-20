@@ -6,7 +6,7 @@ declare namespace IQueryBiz {
     price: number;
     goodsPicUrl: string;
   }
-  type RequestParam = Partial<{
+  type Param = Partial<{
     id?: number;
     title?: string;
     price?: number;
@@ -17,7 +17,6 @@ declare namespace IQueryBiz {
 
   interface DelParam {
     id: number;
-    apiType: 'BIZ';
   }
   interface Resp {
     list: List[];

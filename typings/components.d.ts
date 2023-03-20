@@ -1,7 +1,8 @@
 interface IFooterToolbar {
-  placeholderHeight: number;
+  placeholderHeight?: number;
   children: React.ReactNode;
   className?: string;
+  placeholderClassName?: string;
 }
 
 interface IPageLayout {

@@ -1,17 +1,23 @@
 import { useState } from 'react';
 import { View } from '@tarojs/components';
 import { Form, Input, Picker, Cell, Button } from '@nutui/nutui-react-taro';
+import { create, edit } from '../../../../api/modules/address';
 import { getCascadeData } from '../../../../utils';
 import './index.scss';
+import { useQueryString } from '../../../../hooks';
 
 const option = getCascadeData();
 
 export default function AddressAdd() {
+  const id = useQueryString<QueryStringKey>('id');
+  console.log(`id----->：`, id);
   const [isVisible, setIsVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [pickerTitle, setPickerTitle] = useState('请选择地区');
   const [pickerValue, setPickerValue] = useState<Array<number | string>>([]);
 
   const onConfirm = (values: Array<number | string>, chooseData: INutuiTaro.PickerOption[]) => {
+    console.log(`values----->：`, values);
     const text = chooseData.map((item) => item.text).join('');
     setPickerTitle(text);
     setPickerValue(values);
@@ -22,8 +28,27 @@ export default function AddressAdd() {
   const onOpen = () => {
     setIsVisible(true);
   };
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log(`values----->：`, values);
+    setLoading(true);
+    try {
+      let result: IBaseResp<string> = {};
+      if (id) {
+        result = await edit({
+          name: 'name',
+          id: 123,
+        });
+      } else {
+        result = await create({
+          name: 'name',
+        });
+      }
+      setLoading(false);
+      if (!result?.success) return;
+    } catch (error) {
+      setLoading(false);
+      console.error(`error----->：`, error);
+    }
   };
   // rule: 官方示例暂无提供ts类型导出
   // const customValidator = (rule: any, value: string) => {
@@ -53,7 +78,7 @@ export default function AddressAdd() {
             onConfirm={(values, list: INutuiTaro.PickerOption[]) => onConfirm(values, list)}
           />
         </View>
-        <Button block type="primary" formType="submit">
+        <Button loading={loading} block type="primary" formType="submit">
           确认
         </Button>
       </Form>

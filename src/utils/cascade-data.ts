@@ -37,4 +37,31 @@ function getCascadeData() {
   return options;
 }
 
-export default getCascadeData;
+function getCodeToText(codes) {
+  const option = getCascadeData();
+  let provinceCodeText = '';
+  let cityCodeText = '';
+  let countyCodeText = '';
+  option.forEach((item) => {
+    if (item.value === codes[0]) {
+      provinceCodeText = item.text as string;
+    }
+    if (codes[1]) {
+      item.children?.forEach((sbuItem) => {
+        if (sbuItem.value === codes[1]) {
+          cityCodeText = sbuItem.text as string;
+        }
+        if (codes[2]) {
+          sbuItem?.children?.forEach((lastItem) => {
+            if (lastItem.value === codes[2]) {
+              countyCodeText = lastItem.text as string;
+            }
+          });
+        }
+      });
+    }
+  });
+  return `${provinceCodeText}${cityCodeText}${countyCodeText}`;
+}
+
+export { getCascadeData, getCodeToText };
