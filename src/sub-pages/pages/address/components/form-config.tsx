@@ -51,6 +51,7 @@ export default function FormConfig(props: FormConfig) {
   };
   return (
     <>
+      {/* 官方暂时没有该组件 */}
       <Form onFinish={(values) => onFinish(values)}>
         <Form.Item label="姓名" name="username" rules={[{ required: true, message: '请输入姓名' }]}>
           <Input className="nut-input-text" placeholder="请输入姓名" type="text" />

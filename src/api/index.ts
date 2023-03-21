@@ -55,10 +55,10 @@ fly.interceptors.response.use(
   },
 );
 
-class ApiRequest {
-  private static instance: ApiRequest;
+class UseFetch {
+  private static instance: UseFetch;
   static getInstance(BASE_URL: string) {
-    if (!this.instance) this.instance = new ApiRequest(BASE_URL);
+    if (!this.instance) this.instance = new UseFetch(BASE_URL);
     return this.instance;
   }
   private BASE_URL = '';
@@ -104,4 +104,4 @@ class ApiRequest {
   }
 }
 
-export default ApiRequest.getInstance(API_URL);
+export default UseFetch.getInstance(API_URL);

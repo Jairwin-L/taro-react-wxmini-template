@@ -11,7 +11,7 @@ function useModel() {
     setLoading(true);
     const response = await query({
       pageIndex: 1,
-      pageSize: 1,
+      pageSize: 10,
     });
     if (didShow && !didCancel) {
       const tempList: IQueryShop.Resp = [];

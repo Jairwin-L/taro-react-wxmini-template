@@ -3,7 +3,7 @@ import { Empty, Button } from '@nutui/nutui-react-taro';
 import AutoCenter from '../auto-center';
 import Loading from '../loading';
 
-export default function PageLayout(props: IPageLayout) {
+export default function PageLayout(props: IUseModel) {
   const { children, useModel } = props || {};
   const { loading = false, msg = '', success = false, onRefetch } = useModel || {};
   if (loading) {

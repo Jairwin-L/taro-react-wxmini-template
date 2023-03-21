@@ -1,5 +1,5 @@
 import { MAIN } from '../const';
-import apiRequest from '../index';
+import useFetch from '../index';
 /**
  * @title 列表
  * @description 查
@@ -7,7 +7,7 @@ import apiRequest from '../index';
 // 查
 export async function query(params: IQueryBiz.Param): Promise<IBaseResp<IQueryBiz.Resp>> {
   try {
-    const res = await apiRequest.get<IQueryBiz.Resp, IQueryBiz.Param>(MAIN.HOME, params);
+    const res = await useFetch.get<IQueryBiz.Resp, IQueryBiz.Param>(MAIN.HOME, params);
     return res;
   } catch (error) {
     console.log(`error----->：`, error);

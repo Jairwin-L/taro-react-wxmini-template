@@ -1,15 +1,3 @@
-@mixin customTabbarPlaceholder {
-  height: $tabbarClientHeight;
-}
-@mixin customTabbarPlaceholderDevtools {
-  height: $tabbarDesktopHeight;
-}
-@mixin customTabbarPlaceholderMac {
-  height: $tabbarDesktopHeight;
-}
-@mixin customTabbarPlaceholderIos {
-  height: $tabbarClientHeight;
-}
 /* 绝对布局全覆盖常用于对话框的遮罩层
  * ${background} 背景色
  * ${z-index} 所在层级
@@ -29,7 +17,7 @@
 /* 布局文字全居中
  * ${textAlign} 文字对齐方式
  */
-@mixin locInCenter($textAlign: center) {
+@mixin textCenter($textAlign: center) {
   position: absolute;
   top: 50%;
   left: 50%;

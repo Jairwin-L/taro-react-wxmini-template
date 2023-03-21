@@ -29,7 +29,7 @@ const config = {
     resource: [
       'src/styles/variable.scss',
       'src/styles/mixins.scss',
-      'src/styles/custom_theme.scss',
+      'src/styles/custom-theme.scss',
     ],
     data: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`,
   },

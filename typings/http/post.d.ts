@@ -19,7 +19,7 @@ declare namespace IQueryBiz {
     id: number;
   }
   interface Resp {
-    list: List[];
+    list: List;
     page: CommonPage;
   }
 }

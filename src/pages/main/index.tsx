@@ -12,8 +12,7 @@ export default function Main() {
       <PageLayout useModel={model}>
         <View className="main">首页</View>
         <View>
-          {data?.list?.map((item) => {
-            // @ts-ignore TODO:
+          {data?.list?.map((item: IQueryBiz.ListItem) => {
             return <View key={item.id}>{item.title}</View>;
           })}
         </View>

@@ -5,7 +5,7 @@ interface IFooterToolbar {
   placeholderClassName?: string;
 }
 
-interface IPageLayout {
+interface IUseModel {
   children: React.ReactNode;
   useModel?: {
     loading?: boolean;
