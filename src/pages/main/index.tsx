@@ -1,5 +1,5 @@
-import { View } from '@tarojs/components';
-import { Button } from '@nutui/nutui-react-taro';
+import { View, Image } from '@tarojs/components';
+import { Button, Swiper, SwiperItem } from '@nutui/nutui-react-taro';
 import { CustomTabbarPlaceholder, PageLayout } from '../../components';
 import useModel from './model';
 import './index.scss';
@@ -10,6 +10,21 @@ export default function Main() {
   return (
     <>
       <PageLayout useModel={model}>
+        <Swiper
+          height={150}
+          paginationColor="#1677ff"
+          autoPlay="3000"
+          paginationVisible
+          className="swiper"
+        >
+          {data?.banners?.map((item) => {
+            return (
+              <SwiperItem key={item.id}>
+                <Image className="banner-image" src={item.imgUrl} />
+              </SwiperItem>
+            );
+          })}
+        </Swiper>
         <View className="main">首页</View>
         <View>
           {data?.list?.map((item: IQueryBiz.ListItem) => {

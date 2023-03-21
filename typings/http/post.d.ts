@@ -20,6 +20,10 @@ declare namespace IQueryBiz {
   }
   interface Resp {
     list: List;
+    banners: Array<{
+      id: number;
+      imgUrl: string;
+    }>;
     page: CommonPage;
   }
 }

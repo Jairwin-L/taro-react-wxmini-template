@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { showToast } from '@tarojs/taro';
+import { showToast, showModal } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import { PageLayout, FooterToolbar, CustomTabbarPlaceholder } from '../../components';
-import { InputNumber, Icon } from '@nutui/nutui-react-taro';
+import { InputNumber, Swipe, Icon, Button } from '@nutui/nutui-react-taro';
 import useModel from './model';
 import './index.scss';
 import { getCustomTabbarClass } from '../../utils';
@@ -22,26 +22,38 @@ function Shop() {
       // });
     }
   };
+  const onClear = () => {
+    showModal({
+      title: '删除提示',
+      content: `确定要清空购物车？`,
+      success(res) {
+        if (res.confirm) {
+          setTotalPrice(0);
+          setAllSelected(false);
+          setList([]);
+          setSelectedList([]);
+          showToast({ title: '操作成功' });
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      },
+    });
+  };
   // 商品删除
-  const onDel = () => {
-    if (selectedList.length <= 0) {
-      return showToast({
-        title: '没有选择宝贝',
-        icon: 'none',
-      });
-    }
-    // showModal({
-    //   title: '删除提示',
-    //   content: `确定要删除“${item.title}”嘛？`,
-    //   success(res) {
-    //     if (res.confirm) {
-    //       setList(list.filter((delItem: any) => delItem.id !== item.id));
-    //       showToast({ title: '删除成功' });
-    //     } else if (res.cancel) {
-    //       console.log('用户点击取消');
-    //     }
-    //   },
-    // });
+  const onDel = (item, index) => {
+    showModal({
+      title: '删除提示',
+      content: `确定要删除“${item.title}”嘛？`,
+      success(res) {
+        if (res.confirm) {
+          onCalculatePrice(item.price, index);
+          setList(list.filter((delItem) => delItem.id !== item.id));
+          showToast({ title: '删除成功' });
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+      },
+    });
   };
   // 单个商品选择和不选择
   const onToggleSelected = (index: number) => {
@@ -91,34 +103,47 @@ function Shop() {
               购物车共计<Text className="number">{list?.length ?? '--'}</Text>件商品
             </Text>
           </View>
-          <View className="delete-btn" onClick={onDel}>
-            删除
+          <View className="delete-btn" onClick={onClear}>
+            清空
           </View>
         </View>
         <View className="shop-list-container">
           <View className="shop-list">
             {list?.map((item, index) => {
               return (
-                <View className="shop-list-item" key={item.id}>
-                  <Text onClick={() => onToggleSelected(index)}>
-                    {item.isSelected ? <Icon name="check-checked" /> : <Icon name="check-normal" />}
-                  </Text>
-                  <View className="shop-img-container">
-                    <Image className="shop-img" src={item.url} />
-                  </View>
-                  <View className="shop-desc">
-                    <p className="shop-title">{item.title}</p>
-                    <View className="shop-money">
-                      <Text className="shop-price">¥{item.price ?? '0'}</Text>
-                      <InputNumber
-                        min={1}
-                        max={100000}
-                        modelValue={item.count}
-                        onChangeFuc={(value: number) => onCalculatePrice(value, index)}
-                      />
+                <Swipe
+                  key={item.id}
+                  rightAction={
+                    <Button type="primary" shape="square" onClick={() => onDel(item, index)}>
+                      删除
+                    </Button>
+                  }
+                >
+                  <View className="shop-list-item">
+                    <Text onClick={() => onToggleSelected(index)}>
+                      {item.isSelected ? (
+                        <Icon name="check-checked" />
+                      ) : (
+                        <Icon name="check-normal" />
+                      )}
+                    </Text>
+                    <View className="shop-img-container">
+                      <Image className="shop-img" src={item.url} />
+                    </View>
+                    <View className="shop-desc">
+                      <p className="shop-title">{item.title}</p>
+                      <View className="shop-money">
+                        <Text className="shop-price">¥{item.price ?? '0'}</Text>
+                        <InputNumber
+                          min={1}
+                          max={100000}
+                          modelValue={item.count}
+                          onChangeFuc={(value: number) => onCalculatePrice(value, index)}
+                        />
+                      </View>
                     </View>
                   </View>
-                </View>
+                </Swipe>
               );
             })}
           </View>
