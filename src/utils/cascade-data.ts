@@ -2,8 +2,11 @@
 import provinces from 'china-division/dist/provinces.json';
 import cities from 'china-division/dist/cities.json';
 import areas from 'china-division/dist/areas.json';
-
-function getCascadeData() {
+/**
+ * @module genCascadeData
+ * @description 获取地址级联数据
+ */
+function genCascadeData() {
   areas.forEach((area) => {
     const matchCity: INutuiTaro.ProvinceOption = cities.filter(
       (city) => city.code === area.cityCode,
@@ -36,9 +39,12 @@ function getCascadeData() {
   }));
   return options;
 }
-
+/**
+ * @module getCodeToText
+ * @description 级联code转文案
+ */
 function getCodeToText(codes) {
-  const option = getCascadeData();
+  const option = genCascadeData();
   let provinceCodeText = '';
   let cityCodeText = '';
   let countyCodeText = '';
@@ -64,4 +70,4 @@ function getCodeToText(codes) {
   return `${provinceCodeText}${cityCodeText}${countyCodeText}`;
 }
 
-export { getCascadeData, getCodeToText };
+export { genCascadeData, getCodeToText };

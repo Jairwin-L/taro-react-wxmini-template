@@ -6,6 +6,7 @@ declare namespace IQueryShop {
     price: number;
     count: number;
     url: string;
+    desc?: string;
     isSelected?: boolean;
   }
   interface QueryParam extends CommonPage {

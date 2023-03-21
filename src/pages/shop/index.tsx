@@ -5,10 +5,10 @@ import { PageLayout, FooterToolbar, CustomTabbarPlaceholder } from '../../compon
 import { InputNumber, Swipe, Icon, Button } from '@nutui/nutui-react-taro';
 import useModel from './model';
 import './index.scss';
-import { getCustomTabbarClass } from '../../utils';
+import { genCustomTabbarClass } from '../../utils';
 
 function Shop() {
-  const customTabbarClass = getCustomTabbarClass();
+  const customTabbarClass = genCustomTabbarClass();
   const model = useModel();
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const [list, setList] = useState<IQueryShop.Resp>([]);
@@ -43,7 +43,7 @@ function Shop() {
   const onDel = (item, index) => {
     showModal({
       title: '删除提示',
-      content: `确定要删除“${item.title}”嘛？`,
+      content: `确定要删除“${item.title}”？`,
       success(res) {
         if (res.confirm) {
           onCalculatePrice(item.price, index);
@@ -109,12 +109,12 @@ function Shop() {
         </View>
         <View className="shop-list-container">
           <View className="shop-list">
-            {list?.map((item, index) => {
+            {list?.map((item: IQueryShop.ListItem, index) => {
               return (
                 <Swipe
                   key={item.id}
                   rightAction={
-                    <Button type="primary" shape="square" onClick={() => onDel(item, index)}>
+                    <Button type="danger" shape="square" onClick={() => onDel(item, index)}>
                       删除
                     </Button>
                   }
@@ -131,7 +131,7 @@ function Shop() {
                       <Image className="shop-img" src={item.url} />
                     </View>
                     <View className="shop-desc">
-                      <p className="shop-title">{item.title}</p>
+                      <p className="shop-title">{item.desc}</p>
                       <View className="shop-money">
                         <Text className="shop-price">¥{item.price ?? '0'}</Text>
                         <InputNumber

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { View } from '@tarojs/components';
 import { Form, Input, Picker, Cell, Button } from '@nutui/nutui-react-taro';
 import { create, edit } from '../../../../api/modules/address';
-import { getCascadeData } from '../../../../utils';
+import { genCascadeData } from '../../../../utils';
 import { goBack } from '../../../../utils/navigate';
 
-const option = getCascadeData();
+const option = genCascadeData();
 
 export default function FormConfig(props: FormConfig) {
   const { id } = props;

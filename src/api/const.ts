@@ -12,3 +12,8 @@ export enum ADDRESS {
 export enum SHOP {
   LIST = '/shop',
 }
+
+export enum PAY {
+  OPENID = '/openid',
+  CREATE = '/order',
+}

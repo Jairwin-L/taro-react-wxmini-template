@@ -1,6 +1,6 @@
 import { ApiUrl } from '../constants';
-import { getEnvVersion } from '../utils';
+import { genEnvVersion } from '../utils';
 
-const envVersion = getEnvVersion();
+const envVersion = genEnvVersion();
 
 export const API_URL = ApiUrl[envVersion];

@@ -1,3 +1,7 @@
+/**
+ * @module objectToParams
+ * @description 小程序入参转换
+ */
 function objectToParams<T>(obj: T) {
   const params = Object.keys(obj || {}) || [];
   if (params.length <= 0) return '';

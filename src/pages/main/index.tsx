@@ -3,10 +3,14 @@ import { Button, Swiper, SwiperItem } from '@nutui/nutui-react-taro';
 import { CustomTabbarPlaceholder, PageLayout } from '../../components';
 import useModel from './model';
 import './index.scss';
+import { subPageNavigate } from '../../utils/navigate';
 
 export default function Main() {
   const model = useModel();
   const { data } = model;
+  const onGoPay = () => {
+    subPageNavigate('pay');
+  };
   return (
     <>
       <PageLayout useModel={model}>
@@ -31,8 +35,8 @@ export default function Main() {
             return <View key={item.id}>{item.title}</View>;
           })}
         </View>
-        <Button type="primary" className="btn">
-          主要按钮
+        <Button type="primary" className="btn" onClick={onGoPay}>
+          支付页
         </Button>
         <View>底部</View>
       </PageLayout>
