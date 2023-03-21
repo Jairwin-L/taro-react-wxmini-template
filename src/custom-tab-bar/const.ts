@@ -6,6 +6,12 @@ export const TAB_BARS = [
     label: '首页',
   },
   {
+    value: 'shop',
+    selectedIconPath: '../images/tabbar_shop_selected.png',
+    iconPath: '../images/tabbar_shop.png',
+    label: '购物车',
+  },
+  {
     value: 'mine',
     selectedIconPath: '../images/tabbar_mine_selected.png',
     iconPath: '../images/tabbar_mine.png',

@@ -1,4 +1,4 @@
-import Taro, { getStorageSync } from '@tarojs/taro';
+import { getStorageSync, showToast } from '@tarojs/taro';
 import Fly from 'flyio/dist/npm/wx';
 import { DEFAULT_ERROR_MSG, SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from './../constants/api';
 import { API_URL } from './config';
@@ -29,12 +29,12 @@ fly.interceptors.response.use(
         } else {
           errorMsg = data.msg || SYSTEM_ERROR_MSG;
         }
-        Taro.showToast({
+        showToast({
           title: errorMsg,
           icon: 'error',
         });
       } else {
-        Taro.showToast({
+        showToast({
           title: data.msg || SYSTEM_SUCCESS_MSG,
           icon: 'success',
         });

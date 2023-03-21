@@ -1,0 +1,121 @@
+.base-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 120px;
+  .header-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 15px auto;
+    .title {
+      .number {
+        color: $primary;
+      }
+    }
+    .delete-btn {
+      color: $primary;
+    }
+  }
+  .shop-list-container {
+    width: 95%;
+    margin: 0 auto;
+    .shop-list {
+      .shop-list-item {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: $white;
+        .checkbox_icon {
+          margin-right: 5px;
+          font-size: 18px;
+        }
+        .shop-img-container {
+          .shop-img {
+            width: 150px;
+            height: 150px;
+            margin-right: 10px;
+            border-radius: 10px;
+          }
+        }
+        .shop-desc {
+          width: 100%;
+          .shop-title {
+            font-size: 34px;
+            @include multiLineEllipsis(2);
+          }
+          .shop-money {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span {
+              &:first-child {
+                margin-right: 8px;
+                color: #e40816;
+              }
+              &:last-child {
+                color: $black;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.custom-tab-bar-placeholder {
+  bottom: $tabbarClientHeight;
+}
+.custom-tab-bar-placeholder-devtools {
+  bottom: $tabbarDesktopHeight;
+}
+.custom-tab-bar-placeholder-mac {
+  bottom: $tabbarDesktopHeight;
+}
+.custom-tab-bar-placeholder-ios {
+  bottom: $tabbarClientHeight;
+}
+.shop-footer {
+  position: fixed;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background: $white;
+  .shop-selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .checkbox_icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+  .footer-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .total-price {
+      margin-right: 30px;
+      .discount_price {
+        color: #c1878a;
+      }
+    }
+    .calculate-btn {
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      color: $white;
+      background: $primary;
+      border-radius: 50px;
+      font-size: 36px;
+    }
+  }
+}

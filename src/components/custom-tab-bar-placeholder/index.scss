@@ -1,15 +1,15 @@
-$clientHeight: 160px;
-$desktopHeight: 100px;
+$tabbarClientHeight: 160px;
+$tabbarDesktopHeight: 100px;
 
 .custom-tab-bar-placeholder {
-  height: $clientHeight;
+  height: $tabbarClientHeight;
 }
 .custom-tab-bar-placeholder-devtools {
-  height: $desktopHeight;
+  height: $tabbarDesktopHeight;
 }
 .custom-tab-bar-placeholder-mac {
-  height: $desktopHeight;
+  height: $tabbarDesktopHeight;
 }
 .custom-tab-bar-placeholder-ios {
-  height: $clientHeight;
+  height: $tabbarClientHeight;
 }

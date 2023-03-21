@@ -9,3 +9,6 @@ export enum ADDRESS {
   EDIT = '/address',
   DEL = '/address',
 }
+export enum SHOP {
+  LIST = '/shop',
+}
