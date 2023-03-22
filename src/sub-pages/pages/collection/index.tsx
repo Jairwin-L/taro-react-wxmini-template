@@ -1,5 +1,5 @@
 import './index.scss';
 
-export default function Address() {
+export default function Collection() {
   return <>收藏</>;
 }

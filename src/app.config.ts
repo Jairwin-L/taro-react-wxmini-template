@@ -27,6 +27,12 @@ export default defineAppConfig({
         text: '首页',
       },
       {
+        pagePath: 'pages/category/index',
+        selectedIconPath: 'images/tabbar_category_selected.png',
+        iconPath: 'images/tabbar_category.png',
+        text: '类目',
+      },
+      {
         pagePath: 'pages/shop/index',
         selectedIconPath: 'images/tabbar_shop_selected.png',
         iconPath: 'images/tabbar_shop.png',

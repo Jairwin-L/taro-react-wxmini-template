@@ -12,7 +12,9 @@ export enum ADDRESS {
 export enum SHOP {
   LIST = '/shop',
 }
-
+export enum CATEGORY {
+  LIST = '/category',
+}
 export enum PAY {
   OPENID = '/openid',
   CREATE = '/order',

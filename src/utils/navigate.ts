@@ -5,7 +5,7 @@ import objectToParams from './object';
  * @module navigate
  * @description 统一非tabbar页面跳转
  */
-function navigate<T>(url: IPagePreFix, obj?: any): Promise<TaroGeneral.CallbackResult> {
+function navigate<T>(url: IPagePreFix, obj?: T): Promise<TaroGeneral.CallbackResult> {
   const params = objectToParams<T>(obj as T);
   return navigateTo({
     url: `../${url}/index${params}`,

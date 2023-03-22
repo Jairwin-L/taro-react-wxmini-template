@@ -1,7 +1,8 @@
 import { makePageUrl } from '../utils/page-path';
 
-export const PAGES: [string, string, string] = [
+export const PAGES: [string, string, string, string] = [
   makePageUrl('main'),
+  makePageUrl('category'),
   makePageUrl('shop'),
   makePageUrl('mine'),
 ];

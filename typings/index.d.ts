@@ -8,6 +8,7 @@ type QueryStringKey = 'id';
 
 type IPagePreFix =
   | 'main'
+  | 'category'
   | 'shop'
   | 'mine'
   | 'address'

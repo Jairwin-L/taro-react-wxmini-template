@@ -7,7 +7,7 @@ import useModel from './model';
 import './index.scss';
 import { genCustomTabbarClass } from '../../utils';
 
-function Shop() {
+export default function Shop() {
   const customTabbarClass = genCustomTabbarClass();
   const model = useModel();
   const [allSelected, setAllSelected] = useState<boolean>(false);
@@ -167,5 +167,3 @@ function Shop() {
     </PageLayout>
   );
 }
-
-export default Shop;
