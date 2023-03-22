@@ -13,4 +13,6 @@ export const SUB_PAGES: string[] = [
   makePageUrl('collection'),
   makePageUrl('change-password'),
   makePageUrl('pay'),
+  makePageUrl('login'),
+  makePageUrl('register'),
 ];

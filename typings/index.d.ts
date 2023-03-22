@@ -16,6 +16,8 @@ type IPagePreFix =
   | 'change-password'
   | 'address/add'
   | 'address/edit'
+  | 'login'
+  | 'register'
   | 'pay';
 
 type IEnvVersion = 'release' | 'trial' | 'develop';
