@@ -37,10 +37,7 @@ export async function show(
 // 删除
 export async function del(params: IQueryAddress.DelParam): Promise<IBaseResp<string>> {
   try {
-    const res = await useFetch.delete<IBaseResp<string>, IQueryAddress.DelParam>(
-      ADDRESS.DEL,
-      params,
-    );
+    const res = await useFetch.delete<string, IQueryAddress.DelParam>(ADDRESS.DEL, params);
     return res;
   } catch (error) {
     console.log(`delete:${ADDRESS.DEL}----->：`, error);
@@ -50,7 +47,7 @@ export async function del(params: IQueryAddress.DelParam): Promise<IBaseResp<str
 // 创建
 export async function create(params: IQueryAddress.Param): Promise<IBaseResp<string>> {
   try {
-    const res = await useFetch.post<IBaseResp<string>, IQueryAddress.Param>(ADDRESS.CREATE, params);
+    const res = await useFetch.post<string, IQueryAddress.Param>(ADDRESS.CREATE, params);
     return res;
   } catch (error) {
     console.log(`post:${ADDRESS.CREATE}----->：`, error);
@@ -60,10 +57,7 @@ export async function create(params: IQueryAddress.Param): Promise<IBaseResp<str
 // 修改
 export async function edit(params: IQueryAddress.EditParam): Promise<IBaseResp<string>> {
   try {
-    const res = await useFetch.put<IBaseResp<string>, IQueryAddress.EditParam>(
-      ADDRESS.EDIT,
-      params,
-    );
+    const res = await useFetch.put<string, IQueryAddress.EditParam>(ADDRESS.EDIT, params);
     return res;
   } catch (error) {
     console.log(`put:${ADDRESS.EDIT}----->：`, error);

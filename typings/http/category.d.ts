@@ -10,17 +10,5 @@ declare namespace IQueryCategory {
     wapBannerUrl?: string;
     categoryList?: ListItem[];
   }
-  interface QueryParam extends CommonPage {
-    name?: string;
-  }
-  interface Param {
-    name: string;
-  }
-  interface DetailParam {
-    id: number;
-  }
-  interface DelParam {
-    id: number;
-  }
   type Resp = List;
 }

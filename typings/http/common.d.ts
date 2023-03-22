@@ -3,9 +3,7 @@ interface IBaseResp<D> {
   msg?: string;
   success?: boolean;
 }
-interface CommonPage {
-  pageIndex: number;
-  pageSize: number;
+interface CommonPage extends CommonRespPage {
   totalCount?: number;
 }
 

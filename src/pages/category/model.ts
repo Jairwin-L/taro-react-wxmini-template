@@ -9,10 +9,7 @@ function useModel() {
   const [didShow, setDidShow] = useState<boolean>(false);
   const fetchModel = async () => {
     setLoading(true);
-    const response = await query({
-      pageIndex: 1,
-      pageSize: 10,
-    });
+    const response = await query();
     if (didShow && !didCancel) {
       setLoading(false);
       setResp(response);

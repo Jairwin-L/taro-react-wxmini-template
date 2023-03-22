@@ -27,6 +27,3 @@ declare namespace IQueryBiz {
     page: CommonPage;
   }
 }
-
-export = IQueryBiz;
-export as namespace IQueryBiz;

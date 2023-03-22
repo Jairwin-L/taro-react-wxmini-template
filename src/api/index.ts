@@ -66,7 +66,7 @@ class UseFetch {
     this.BASE_URL = BASE_URL;
   }
   // RResp: response, Param: 入参
-  async get<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
+  async get<Resp, Param = never>(url: string, params?: Param): Promise<IBaseResp<Resp>> {
     const response = await fly.get<Resp>(`${this.BASE_URL}${url}`, params);
     return new Promise((resolve) => {
       resolve(response);
@@ -79,13 +79,13 @@ class UseFetch {
       resolve(response);
     });
   }
-  async post<Resp, Param>(url: string, params: Param): Promise<Resp> {
+  async post<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
     const response = await fly.post(`${this.BASE_URL}${url}`, params);
     return new Promise((resolve) => {
       resolve(response);
     });
   }
-  async delete<Resp, Param>(url: string, params: Param): Promise<Resp> {
+  async delete<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
     const { id } = params as Param & {
       id: string;
     };
@@ -96,7 +96,7 @@ class UseFetch {
       resolve(response);
     });
   }
-  async put<Resp, Param>(url: string, params: Param): Promise<Resp> {
+  async put<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
     const response = await fly.put(`${this.BASE_URL}${url}`, params);
     return new Promise((resolve) => {
       resolve(response);
