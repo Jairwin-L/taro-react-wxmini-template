@@ -52,10 +52,10 @@ fly.interceptors.response.use(
   },
 );
 
-class Fetch {
-  private static instance: Fetch;
+class Request {
+  private static instance: Request;
   static getInstance(BASE_URL: string) {
-    if (!this.instance) this.instance = new Fetch(BASE_URL);
+    if (!this.instance) this.instance = new Request(BASE_URL);
     return this.instance;
   }
   private BASE_URL = '';
@@ -89,4 +89,4 @@ class Fetch {
   }
 }
 
-export default Fetch.getInstance(API_URL);
+export default Request.getInstance(API_URL);

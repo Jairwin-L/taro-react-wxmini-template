@@ -1,5 +1,5 @@
 import { ADDRESS } from '../const';
-import fetch from '../index';
+import request from '../index';
 /**
  * @title 地址
  * @description 增删改查
@@ -9,7 +9,10 @@ export async function query(
   params: IQueryAddress.QueryParam,
 ): Promise<IBaseResp<IQueryAddress.Resp>> {
   try {
-    const res = await fetch.get<IQueryAddress.Resp, IQueryAddress.QueryParam>(ADDRESS.LIST, params);
+    const res = await request.get<IQueryAddress.Resp, IQueryAddress.QueryParam>(
+      ADDRESS.LIST,
+      params,
+    );
     return res;
   } catch (error) {
     console.error(`get:${ADDRESS.LIST}----->：`, error);
@@ -21,7 +24,7 @@ export async function show(
   params: IQueryAddress.DetailParam,
 ): Promise<IBaseResp<IQueryAddress.Resp>> {
   try {
-    const res = await fetch.get<IQueryAddress.Resp, IQueryAddress.DetailParam>(
+    const res = await request.get<IQueryAddress.Resp, IQueryAddress.DetailParam>(
       ADDRESS.SHOW,
       params,
     );
@@ -34,7 +37,7 @@ export async function show(
 // 删除
 export async function del(params: IQueryAddress.DelParam): Promise<IBaseResp<string>> {
   try {
-    const res = await fetch.delete<string, IQueryAddress.DelParam>(ADDRESS.DEL, params);
+    const res = await request.delete<string, IQueryAddress.DelParam>(ADDRESS.DEL, params);
     return res;
   } catch (error) {
     console.error(`delete:${ADDRESS.DEL}----->：`, error);
@@ -44,7 +47,7 @@ export async function del(params: IQueryAddress.DelParam): Promise<IBaseResp<str
 // 创建
 export async function create(params: IQueryAddress.Param): Promise<IBaseResp<string>> {
   try {
-    const res = await fetch.post<string, IQueryAddress.Param>(ADDRESS.CREATE, params);
+    const res = await request.post<string, IQueryAddress.Param>(ADDRESS.CREATE, params);
     return res;
   } catch (error) {
     console.error(`post:${ADDRESS.CREATE}----->：`, error);
@@ -54,7 +57,7 @@ export async function create(params: IQueryAddress.Param): Promise<IBaseResp<str
 // 修改
 export async function edit(params: IQueryAddress.EditParam): Promise<IBaseResp<string>> {
   try {
-    const res = await fetch.put<string, IQueryAddress.EditParam>(ADDRESS.EDIT, params);
+    const res = await request.put<string, IQueryAddress.EditParam>(ADDRESS.EDIT, params);
     return res;
   } catch (error) {
     console.error(`put:${ADDRESS.EDIT}----->：`, error);

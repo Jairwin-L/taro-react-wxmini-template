@@ -1,5 +1,5 @@
 import { CATEGORY } from '../const';
-import fetch from '../index';
+import request from '../index';
 /**
  * @title 类目
  * @description 查
@@ -7,7 +7,7 @@ import fetch from '../index';
 // 列表查询
 export async function query(): Promise<IBaseResp<IQueryCategory.Resp>> {
   try {
-    const res = await fetch.get<IQueryCategory.Resp>(CATEGORY.LIST);
+    const res = await request.get<IQueryCategory.Resp>(CATEGORY.LIST);
     return res;
   } catch (error) {
     console.error(`get:${CATEGORY.LIST}----->：`, error);
