@@ -7,36 +7,51 @@ import areas from 'china-division/dist/areas.json';
  * @description 获取地址级联数据
  */
 function genCascadeData() {
-  areas.forEach((area) => {
-    const matchCity: INutuiTaro.ProvinceOption = cities.filter(
-      (city) => city.code === area.cityCode,
-    )[0];
-    if (matchCity) {
-      matchCity.children = matchCity.children || [];
-      matchCity.children.push({
-        text: area.name,
-        value: area.code,
+  const citiesMap = new Map();
+  cities.forEach((item) => {
+    const { provinceCode } = item;
+    if (!citiesMap.has(provinceCode)) {
+      citiesMap.set(provinceCode, []);
+    }
+    citiesMap.get(provinceCode).push({
+      text: item.name,
+      value: item.code,
+      children: [],
+    });
+  });
+
+  const provincesMap = new Map();
+  provinces.forEach((item) => {
+    const provinceCode = item.code;
+    if (!provincesMap.has(provinceCode)) {
+      provincesMap.set(provinceCode, []);
+    }
+    const provinceCities = citiesMap.get(provinceCode) || [];
+    provinceCities.forEach((subItem) => {
+      const cityCode = subItem.value;
+      const cityAreas = areas.filter((area) => area.cityCode === cityCode);
+      if (cityAreas.length > 0) {
+        subItem.children = cityAreas.map((area) => ({
+          text: area.name,
+          value: area.code,
+        }));
+      }
+      provincesMap.get(provinceCode).push(subItem);
+    });
+  });
+
+  const options: INutuiTaro.PickerOption[] = [];
+  provincesMap.forEach((provinceCities, provinceCode) => {
+    const province = provinces.find((item) => item.code === provinceCode);
+    if (province) {
+      options.push({
+        text: province.name,
+        value: provinceCode,
+        children: provinceCities,
       });
     }
   });
-  cities.forEach((city: INutuiTaro.ProvinceOption) => {
-    const matchProvince: INutuiTaro.ProvinceOption = provinces.filter(
-      (province) => province.code === city.provinceCode,
-    )[0];
-    if (matchProvince) {
-      matchProvince.children = matchProvince.children || [];
-      matchProvince.children.push({
-        text: city.name,
-        value: city.code,
-        children: city.children,
-      });
-    }
-  });
-  const options = provinces.map((province: INutuiTaro.ProvinceOption) => ({
-    text: province.name,
-    value: province.code,
-    children: province.children,
-  }));
+
   return options;
 }
 /**
@@ -48,25 +63,27 @@ function getCodeToText(codes) {
   let provinceCodeText = '';
   let cityCodeText = '';
   let countyCodeText = '';
-  option.forEach((item) => {
+  for (const item of option) {
     if (item.value === codes[0]) {
       provinceCodeText = item.text as string;
-    }
-    if (codes[1]) {
-      item.children?.forEach((sbuItem) => {
-        if (sbuItem.value === codes[1]) {
-          cityCodeText = sbuItem.text as string;
-        }
-        if (codes[2]) {
-          sbuItem?.children?.forEach((lastItem) => {
+      if (!codes[1]) break;
+      for (const subItem of item.children || []) {
+        if (subItem.value === codes[1]) {
+          cityCodeText = subItem.text as string;
+          if (!codes[2]) break;
+          for (const lastItem of subItem.children || []) {
             if (lastItem.value === codes[2]) {
               countyCodeText = lastItem.text as string;
+              break;
             }
-          });
+          }
+          break;
         }
-      });
+      }
+      break;
     }
-  });
+  }
+
   return `${provinceCodeText}${cityCodeText}${countyCodeText}`;
 }
 

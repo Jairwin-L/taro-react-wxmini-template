@@ -1,16 +1,13 @@
 import { getStorageSync, showToast } from '@tarojs/taro';
 import Fly from 'flyio/dist/npm/wx';
 import { DEFAULT_ERROR_MSG, SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from './../constants/api';
-import { API_URL } from './config';
+import { API_URL, config } from './config';
 
-const fly = new Fly();
+const fly = new Fly(config);
 
-fly.config.timeout = 3500;
 fly.interceptors.request.use((request) => {
   if (getStorageSync('token')) {
     request.headers.token = getStorageSync('token') || '';
-    request.headers['Content-Type'] = 'application/json';
-    request.headers.Accept = 'application/json';
   }
   return request;
 });
@@ -55,10 +52,10 @@ fly.interceptors.response.use(
   },
 );
 
-class UseFetch {
-  private static instance: UseFetch;
+class Fetch {
+  private static instance: Fetch;
   static getInstance(BASE_URL: string) {
-    if (!this.instance) this.instance = new UseFetch(BASE_URL);
+    if (!this.instance) this.instance = new Fetch(BASE_URL);
     return this.instance;
   }
   private BASE_URL = '';
@@ -66,42 +63,30 @@ class UseFetch {
     this.BASE_URL = BASE_URL;
   }
   // RResp: response, Param: 入参
-  async get<Resp, Param = never>(url: string, params?: Param): Promise<IBaseResp<Resp>> {
-    const response = await fly.get<Resp>(`${this.BASE_URL}${url}`, params);
-    return new Promise((resolve) => {
-      resolve(response);
-    });
+  get<Resp, Param = never>(url: string, params?: Param): Promise<IBaseResp<Resp>> {
+    return this.fetch(url, 'get', params);
   }
-  async show<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
-    const { id } = params as Param & { id: string };
-    const response = await fly.get(`${this.BASE_URL}${url}/${id}`);
-    return new Promise((resolve) => {
-      resolve(response);
-    });
+  delete<Resp, Param>(
+    url: string,
+    params: NonNullable<Param & { id: number }>,
+  ): Promise<IBaseResp<Resp>> {
+    const { id } = params;
+    return this.fetch(`${url}/${id}`, 'delete');
   }
-  async post<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
-    const response = await fly.post(`${this.BASE_URL}${url}`, params);
-    return new Promise((resolve) => {
-      resolve(response);
-    });
+  put<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
+    return this.fetch(url, 'put', params);
   }
-  async delete<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
-    const { id } = params as Param & {
-      id: string;
-    };
-    const response = await fly.delete(`${this.BASE_URL}${url}`, {
-      id,
-    });
-    return new Promise((resolve) => {
-      resolve(response);
-    });
+  post<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
+    return this.fetch(url, 'post', params);
   }
-  async put<Resp, Param>(url: string, params: Param): Promise<IBaseResp<Resp>> {
-    const response = await fly.put(`${this.BASE_URL}${url}`, params);
-    return new Promise((resolve) => {
-      resolve(response);
-    });
+  private async fetch<Resp, Param>(
+    url: string,
+    method: string,
+    params?: Param,
+  ): Promise<IBaseResp<Resp>> {
+    const response = await fly[method](`${this.BASE_URL}${url}`, params);
+    return response;
   }
 }
 
-export default UseFetch.getInstance(API_URL);
+export default Fetch.getInstance(API_URL);

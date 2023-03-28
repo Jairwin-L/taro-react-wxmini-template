@@ -2,14 +2,10 @@
  * @module objectToParams
  * @description 小程序入参转换
  */
-function objectToParams<T>(obj: T) {
-  const params = Object.keys(obj || {}) || [];
-  if (params.length <= 0) return '';
-  let value = '?';
-  params.forEach((key) => {
-    value += `${key}=${obj[key]}&`;
-  });
-  return value.slice(0, -1);
+function objectToParams<T>(obj: T): string {
+  const params = Object.entries(obj || {});
+  if (params.length === 0) return '';
+  return `?${params.map(([key, value]) => `${key}=${value}`).join('&')}`;
 }
 
 export default objectToParams;
