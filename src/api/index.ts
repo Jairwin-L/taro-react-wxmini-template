@@ -3,9 +3,10 @@ import Fly from 'flyio/dist/npm/wx';
 import { DEFAULT_ERROR_MSG, SYSTEM_ERROR_MSG, SYSTEM_SUCCESS_MSG } from './../constants/api';
 import { API_URL, config } from './config';
 
-const fly = new Fly(config);
+const fly = new Fly();
 
 fly.interceptors.request.use((request) => {
+  request.headers = config;
   if (getStorageSync('token')) {
     request.headers.token = getStorageSync('token') || '';
   }
