@@ -4,8 +4,8 @@ declare namespace IQueryShop {
     id: number;
     title?: string;
     price: number;
-    count: number;
-    url: string;
+    amount: number;
+    goodsPicUrl?: string;
     desc?: string;
     isSelected?: boolean;
   }

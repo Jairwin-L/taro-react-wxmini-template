@@ -62,10 +62,10 @@ export default function Shop() {
   };
   // 单个商品价格计算
   const onCalculatePrice = (value: number, index: number) => {
-    list[index].count = value;
+    list[index].amount = value;
     const priceList = list.filter((item) => item.isSelected);
     const total = priceList.reduce(
-      (acc, cur: IQueryShop.ListItem) => acc + cur.price * cur.count,
+      (acc, cur: IQueryShop.ListItem) => acc + cur.price * cur.amount,
       0,
     );
     setTotalPrice(total);
@@ -84,7 +84,7 @@ export default function Shop() {
   // 计算已选商品价格
   const getSelectedShop = (selectedShopList, originList) => {
     const priceList = selectedShopList.filter((item) => item.isSelected);
-    const total = priceList.reduce((acc, cur) => acc + cur.price * cur.count, 0);
+    const total = priceList.reduce((acc, cur) => acc + cur.price * cur.amount, 0);
     setTotalPrice(total);
     setSelectedList(priceList);
     setList(originList);
@@ -128,7 +128,7 @@ export default function Shop() {
                       )}
                     </Text>
                     <View className="shop-img-container">
-                      <Image className="shop-img" src={item.url} />
+                      <Image className="shop-img" src={item.goodsPicUrl as string} />
                     </View>
                     <View className="shop-desc">
                       <p className="shop-title">{item.desc}</p>
@@ -137,7 +137,7 @@ export default function Shop() {
                         <InputNumber
                           min={1}
                           max={100000}
-                          modelValue={item.count}
+                          modelValue={item.amount}
                           onChangeFuc={(value: number) => onCalculatePrice(value, index)}
                         />
                       </View>

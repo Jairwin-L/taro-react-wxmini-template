@@ -10,7 +10,7 @@ export enum ADDRESS {
   DEL = '/address',
 }
 export enum SHOP {
-  LIST = '/shop',
+  LIST = '/shop/list',
 }
 export enum CATEGORY {
   LIST = '/category',
