@@ -5,6 +5,7 @@ const config = {
     640: 2.34 / 2,
     750: 1,
     828: 1.81 / 2,
+    375: 2 / 1,
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
@@ -19,7 +20,7 @@ const config = {
     type: 'webpack5',
     // 仅 webpack5 支持依赖预编译配置
     prebundle: {
-      enable: true,
+      enable: false,
     },
   },
   cache: {
@@ -56,9 +57,9 @@ const config = {
     optimizeMainPackage: {
       enable: true,
     },
-    prerender: {
-      match: ['pages/**/**', 'sub-pages/pages/**/**'], // 所有以 `pages/shop/` 开头的页面都参与 prerender
-    },
+    // prerender: {
+    //   match: ['pages/**/**', 'sub-pages/pages/**/**'], // 所有以 `pages/shop/` 开头的页面都参与 prerender
+    // },
     // TODO:可绕过，也可以找出
     miniCssExtractPluginOption: {
       ignoreOrder: true,

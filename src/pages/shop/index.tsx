@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { showToast, showModal } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
 import { PageLayout, FooterToolbar, CustomTabbarPlaceholder } from '../../components';
-import { InputNumber, Swipe, Icon, Button } from '@nutui/nutui-react-taro';
+import { InputNumber, Swipe, Button } from '@nutui/nutui-react-taro';
 import useModel from './model';
 import './index.scss';
 import { genCustomTabbarClass } from '../../utils';
@@ -121,11 +121,7 @@ export default function Shop() {
                 >
                   <View className="shop-list-item">
                     <Text onClick={() => onToggleSelected(index)}>
-                      {item.isSelected ? (
-                        <Icon name="check-checked" />
-                      ) : (
-                        <Icon name="check-normal" />
-                      )}
+                      {item.isSelected ? '选中' : '未选中'}
                     </Text>
                     <View className="shop-img-container">
                       <Image className="shop-img" src={item.goodsPicUrl as string} />
@@ -137,8 +133,8 @@ export default function Shop() {
                         <InputNumber
                           min={1}
                           max={100000}
-                          modelValue={item.amount}
-                          onChangeFuc={(value: number) => onCalculatePrice(value, index)}
+                          defaultValue={item.amount}
+                          onChange={(value: number) => onCalculatePrice(value, index)}
                         />
                       </View>
                     </View>
@@ -152,7 +148,7 @@ export default function Shop() {
       <FooterToolbar>
         <View className={`"shop-footer" ${customTabbarClass}`}>
           <View className="shop-selected" onClick={onSelectedAll}>
-            {allSelected ? <Icon name="check-checked" /> : <Icon name="check-normal" />}
+            {allSelected ? '选中' : '未选中'}
             <Text>全选</Text>
           </View>
           <View className="footer-price">

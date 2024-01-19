@@ -3,4 +3,27 @@ page {
   .nut-empty {
     background: #fafbfc;
   }
+  --nutui-button-primary-color: #1677ff;
+}
+/* 引入第三方或自定义的字体图标样式 */
+@font-face {
+  font-family: 'wxmini';
+  src: url('//at.alicdn.com/t/c/font_3950068_l9hjy9kt4y9.ttf?t=1701527653191') format('truetype');
+}
+
+.wxmini {
+  font-family: 'wxmini' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* 这里是重点，需要把用到的图标全部加上去，否则使用的时候无法显示 */
+.wxmini-main:before {
+  content: '\e654';
+}
+.wxmini-mine:before {
+  content: '\e656';
+}
+.wxmini-right-arrow:before {
+  content: '\e630';
 }

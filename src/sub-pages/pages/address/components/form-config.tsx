@@ -1,30 +1,33 @@
 import { useState } from 'react';
 import { View } from '@tarojs/components';
-import { Form, Input, Picker, Cell, Button } from '@nutui/nutui-react-taro';
+import { Form, Input, Picker, Cell, Button, TextArea } from '@nutui/nutui-react-taro';
 import { create, edit } from '../../../../api/modules/address';
+import { Icon } from '../../../../components';
 import { genCascadeData } from '../../../../utils';
 import { goBack } from '../../../../utils/navigate';
 
 const option = genCascadeData();
 
 export default function FormConfig(props: FormConfig) {
+  const [form] = Form.useForm();
   const { id } = props;
-  const [isVisible, setIsVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [pickerTitle, setPickerTitle] = useState('请选择地区');
+  const [pickerTitle, setPickerTitle] = useState('请选择城市');
   const [pickerValue, setPickerValue] = useState<Array<number | string>>([]);
 
-  const onConfirm = (values: Array<number | string>, chooseData: INutuiTaro.PickerOption[]) => {
+  const onConfirm = (chooseData: INutuiTaro.PickerOption[], values: Array<number | string>) => {
     console.log(`values----->：`, values);
+    console.log(`chooseData----->：`, chooseData);
     const text = chooseData.map((item) => item.text).join('');
     setPickerTitle(text);
     setPickerValue(values);
   };
   const onClose = () => {
-    setIsVisible(false);
+    setVisible(false);
   };
   const onOpen = () => {
-    setIsVisible(true);
+    setVisible(true);
   };
   const onFinish = async (values) => {
     console.log(`values----->：`, values);
@@ -51,28 +54,59 @@ export default function FormConfig(props: FormConfig) {
   };
   return (
     <>
-      {/* 官方暂时没有该组件 */}
-      <Form onFinish={(values) => onFinish(values)}>
+      <Form form={form} divider labelPosition="right" onFinish={onFinish}>
         <Form.Item label="姓名" name="username" rules={[{ required: true, message: '请输入姓名' }]}>
-          <Input className="nut-input-text" placeholder="请输入姓名" type="text" />
+          <Input placeholder="请输入姓名" type="text" />
         </Form.Item>
-        <Cell title="请选择城市" desc={pickerTitle} onClick={onOpen} />
-        <View catchMove>
-          <Picker
-            isVisible={isVisible}
-            title={pickerTitle}
-            defaultValueData={pickerValue}
-            // @ts-ignore
-            listData={option}
-            onClose={onClose}
-            // @ts-ignore
-            onConfirm={(values, list: INutuiTaro.PickerOption[]) => onConfirm(values, list)}
+        <Form.Item
+          label="选择城市"
+          name="code"
+          required
+          rules={[
+            {
+              validator: () => {
+                return pickerValue?.length <= 0;
+              },
+              message: '请选择城市',
+            },
+          ]}
+        >
+          <Cell
+            style={{
+              padding: 0,
+            }}
+            extra={
+              <>
+                <View style={{ width: '100%' }}>{pickerTitle}</View>
+                <Icon name="right-arrow" />
+              </>
+            }
+            onClick={onOpen}
           />
-        </View>
-        <Button loading={loading} block type="primary" formType="submit">
-          确认
-        </Button>
+        </Form.Item>
+        <Form.Item
+          label="详细地址"
+          name="address"
+          rules={[
+            { required: true, message: '请输入详细地址' },
+            // { max: 15, message: '详细地址不能超过15个字' },
+          ]}
+        >
+          <TextArea placeholder="请输入详细地址" rows={1} autoSize />
+        </Form.Item>
       </Form>
+      <Button loading={loading} block type="primary" onClick={() => form.submit()}>
+        确认
+      </Button>
+      <Picker
+        visible={visible}
+        title={pickerTitle}
+        // @ts-ignore
+        options={option}
+        onClose={onClose}
+        // @ts-ignore
+        onConfirm={(list: INutuiTaro.PickerOption[], values) => onConfirm(list, values)}
+      />
     </>
   );
 }

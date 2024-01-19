@@ -7,18 +7,18 @@ import './index.scss';
 
 export default function Category() {
   const model = useModel();
-  const [tabValue, setTabValue] = useState('0');
+  const [tabValue, setTabValue] = useState<string | number | undefined>('0');
+  const onTabsChange = (value) => {
+    if (Number(tabValue) === Number(value)) return;
+    setTabValue(value);
+  };
 
   return (
     <PageLayout useModel={model}>
       <Tabs
         style={{ height: '100vh' }}
         value={tabValue}
-        onChange={({ paneKey }) => {
-          if (Number(tabValue) === Number(paneKey)) return;
-          setTabValue(paneKey);
-        }}
-        titleScroll
+        onChange={(value) => onTabsChange(value)}
         direction="vertical"
         autoHeight
       >

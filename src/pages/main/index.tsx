@@ -1,9 +1,9 @@
 import { View, Image } from '@tarojs/components';
-import { Button, Swiper, SwiperItem } from '@nutui/nutui-react-taro';
-import { CustomTabbarPlaceholder, PageLayout } from '../../components';
+import { Button, Swiper } from '@nutui/nutui-react-taro';
+import { CustomTabbarPlaceholder, Icon, PageLayout } from '../../components';
 import useModel from './model';
-import './index.scss';
 import { subPageNavigate } from '../../utils/navigate';
+import './index.scss';
 
 export default function Main() {
   const model = useModel();
@@ -16,28 +16,29 @@ export default function Main() {
       <PageLayout useModel={model}>
         <Swiper
           height={150}
-          paginationColor="#1677ff"
-          autoPlay="3000"
-          paginationVisible
+          // paginationColor="#1677ff"
+          // autoPlay="3000"
+          autoPlay
+          // paginationVisible
           className="swiper"
         >
           {data?.banners?.map((item) => {
             return (
-              <SwiperItem key={item.id}>
+              <Swiper.Item key={item.id}>
                 <Image className="banner-image" src={item.imgUrl} />
-              </SwiperItem>
+              </Swiper.Item>
             );
           })}
         </Swiper>
-        <View className="main">首页</View>
+        <Icon name="main" />
+        <Button type="primary" onClick={onGoPay}>
+          支付页
+        </Button>
         <View>
           {data?.list?.map((item: IQueryBiz.ListItem) => {
             return <View key={item.id}>{item.title}</View>;
           })}
         </View>
-        <Button type="primary" className="btn" onClick={onGoPay}>
-          支付页
-        </Button>
         <View>底部</View>
       </PageLayout>
       <CustomTabbarPlaceholder />
