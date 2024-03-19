@@ -7,8 +7,9 @@ const fly = new Fly();
 
 fly.interceptors.request.use((request) => {
   request.headers = config;
+  request.headers.apifoxToken = '6H5JfNP0QJaBsYAhFCKUv';
   if (getStorageSync('token')) {
-    request.headers.token = getStorageSync('token') || '';
+    console.log(`getStorageSync('token')----->：`, getStorageSync('token'));
   }
   return request;
 });

@@ -21,17 +21,9 @@ function genSystemInfo() {
  */
 function genCustomTabbarClass() {
   // 获取平台信息
-  const { platform } = genSystemInfo();
-  // 定义一个对象，保存不同平台对应的样式类名
-  const platformClass = {
-    [PLATFORM.DEVTOOLS]: 'custom-tab-bar-placeholder-devtools',
-    [PLATFORM.MAC]: 'custom-tab-bar-placeholder-mac',
-    [PLATFORM.WIN]: 'custom-tab-bar-placeholder-windows',
-    [PLATFORM.IOS]: 'custom-tab-bar-placeholder-ios',
-    [PLATFORM.ANDROID]: 'custom-tab-bar-placeholder-android',
-  };
+  const { platform = '' } = genSystemInfo();
   // 根据平台信息获取对应的样式类名并返回
-  return platformClass[platform] || 'custom-tab-bar-placeholder';
+  return `custom-tab-bar-placeholder${platform ? `-${PLATFORM[platform]}` : ''}`;
 }
 /**
  * @module genEnvVersion

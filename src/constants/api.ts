@@ -1,7 +1,7 @@
 export enum ApiUrl {
-  develop = 'https://www.fastmock.site/mock/f8b66bcca16aa287ef3de643cc4cc803/api',
-  trial = 'https://www.fastmock.site/mock/f8b66bcca16aa287ef3de643cc4cc803/api',
-  release = 'https://www.fastmock.site/mock/f8b66bcca16aa287ef3de643cc4cc803/api',
+  develop = 'https://mock.apifox.com/m1/4019938-0-default',
+  trial = 'https://mock.apifox.com/m1/4019938-0-default',
+  release = 'https://mock.apifox.com/m1/4019938-0-default',
 }
 
 export const SYSTEM_SUCCESS_MSG = '操作成功';
