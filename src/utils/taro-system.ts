@@ -1,35 +1,35 @@
 import { PLATFORM } from '../constants';
 import { getSystemInfoSync, getAccountInfoSync } from '@tarojs/taro';
 /**
- * @module genSystemInfo
+ * @module getSystemInfo
  * @description 获取系统信息
  */
-function genSystemInfo() {
+function getSystemInfo() {
   try {
     const res = getSystemInfoSync();
     return res;
   } catch (error: unknown) {
-    console.log(`genSystemInfoSync:error----->：`, error);
+    console.log(`getSystemInfoSync:error----->：`, error);
     return {
       platform: 'ios',
     };
   }
 }
 /**
- * @module genCustomTabbarClass
+ * @module getCustomTabbarClass
  * @description 跟据系统平台，获取自定义tabbar的class
  */
-function genCustomTabbarClass() {
+function getCustomTabbarClass() {
   // 获取平台信息
-  const { platform = '' } = genSystemInfo();
+  const { platform = '' } = getSystemInfo();
   // 根据平台信息获取对应的样式类名并返回
   return `custom-tab-bar-placeholder${platform ? `-${PLATFORM[platform]}` : ''}`;
 }
 /**
- * @module genEnvVersion
+ * @module getEnvVersion
  * @description 获取当前帐号所属环境，默认正式环境
  */
-function genEnvVersion(): IEnvVersion {
+function getEnvVersion(): IEnvVersion {
   try {
     const { miniProgram } = getAccountInfoSync();
     const { envVersion } = miniProgram || {};
@@ -40,4 +40,4 @@ function genEnvVersion(): IEnvVersion {
   }
 }
 
-export { genSystemInfo, genCustomTabbarClass, genEnvVersion };
+export { getSystemInfo, getCustomTabbarClass, getEnvVersion };

@@ -5,10 +5,10 @@ import { PageLayout, FooterToolbar, CustomTabbarPlaceholder } from '../../compon
 import { InputNumber, Swipe, Button } from '@nutui/nutui-react-taro';
 import useModel from './model';
 import './index.scss';
-import { genCustomTabbarClass } from '../../utils';
+import { getCustomTabbarClass } from '../../utils';
 
 export default function Shop() {
-  const customTabbarClass = genCustomTabbarClass();
+  const customTabbarClass = getCustomTabbarClass();
   const model = useModel();
   const [allSelected, setAllSelected] = useState<boolean>(false);
   const [list, setList] = useState<IQueryShop.Resp>([]);

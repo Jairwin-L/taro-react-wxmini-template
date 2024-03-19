@@ -1,9 +1,9 @@
-import { genCustomTabbarClass } from '../../utils';
+import { getCustomTabbarClass } from '../../utils';
 import { View } from '@tarojs/components';
 import './index.scss';
 
 function CustomTabbarPlaceholder() {
-  const customTabbarClass = genCustomTabbarClass();
+  const customTabbarClass = getCustomTabbarClass();
   return <View className={customTabbarClass} />;
 }
 
