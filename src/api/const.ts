@@ -1,5 +1,5 @@
 export enum MAIN {
-  HOME = '/goods',
+  HOME = '/goods/recommend',
 }
 
 export enum ADDRESS {

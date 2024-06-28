@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { useError } from '@tarojs/taro';
 import './app.scss';
 

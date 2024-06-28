@@ -1,7 +1,7 @@
 export enum ApiUrl {
-  develop = 'https://mock.apifox.com/m1/4019938-0-default',
-  trial = 'https://mock.apifox.com/m1/4019938-0-default',
-  release = 'https://mock.apifox.com/m1/4019938-0-default',
+  develop = 'https://mock.apipark.cn/m1/4019938-3656481-default',
+  trial = 'https://mock.apipark.cn/m1/4019938-3656481-default',
+  release = 'https://mock.apipark.cn/m1/4019938-3656481-default',
 }
 
 export const SYSTEM_SUCCESS_MSG = '操作成功';
