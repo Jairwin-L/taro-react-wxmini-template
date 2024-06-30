@@ -18,10 +18,10 @@ export const TAB_BARS = [
     label: '购物车',
   },
   {
-    value: 'mine',
-    selectedIconPath: '../images/tabbar_mine_selected.png',
-    iconPath: '../images/tabbar_mine.png',
-    label: '我的',
+    value: 'account',
+    selectedIconPath: '../images/tabbar_account_selected.png',
+    iconPath: '../images/tabbar_account.png',
+    label: '账户',
   },
 ];
 

@@ -1,4 +1,4 @@
-import { PAGES, SUB_PAGES } from './constants/page';
+import { PAGES, SUB_PAGES, TAB_BARS } from './constants/page';
 
 export default defineAppConfig({
   pages: PAGES,
@@ -19,31 +19,6 @@ export default defineAppConfig({
     color: '#000',
     selectedColor: '#1677ff',
     backgroundColor: '#fff',
-    list: [
-      {
-        pagePath: 'pages/main/index',
-        selectedIconPath: 'images/tabbar_main_selected.png',
-        iconPath: 'images/tabbar_main.png',
-        text: '首页',
-      },
-      {
-        pagePath: 'pages/category/index',
-        selectedIconPath: 'images/tabbar_category_selected.png',
-        iconPath: 'images/tabbar_category.png',
-        text: '类目',
-      },
-      {
-        pagePath: 'pages/shop/index',
-        selectedIconPath: 'images/tabbar_shop_selected.png',
-        iconPath: 'images/tabbar_shop.png',
-        text: '购物车',
-      },
-      {
-        pagePath: 'pages/mine/index',
-        selectedIconPath: 'images/tabbar_mine_selected.png',
-        iconPath: 'images/tabbar_mine.png',
-        text: '我的',
-      },
-    ],
+    list: TAB_BARS,
   },
 });

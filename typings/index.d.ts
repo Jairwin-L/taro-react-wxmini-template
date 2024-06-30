@@ -10,7 +10,7 @@ type IPagePreFix =
   | 'main'
   | 'category'
   | 'shop'
-  | 'mine'
+  | 'account'
   | 'address'
   | 'collection'
   | 'change-password'
