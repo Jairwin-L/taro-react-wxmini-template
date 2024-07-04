@@ -19,7 +19,6 @@ function genCascadeData() {
       children: [],
     });
   });
-
   const provincesMap = new Map();
   provinces.forEach((item) => {
     const provinceCode = item.code;
@@ -39,8 +38,7 @@ function genCascadeData() {
       provincesMap.get(provinceCode).push(subItem);
     });
   });
-
-  const options: INutuiTaro.PickerOption[] = [];
+  const options: INutuiTaro.PickerOptions[] = [];
   provincesMap.forEach((provinceCities, provinceCode) => {
     const province = provinces.find((item) => item.code === provinceCode);
     if (province) {
@@ -51,7 +49,7 @@ function genCascadeData() {
       });
     }
   });
-  return options;
+  return options as INutuiTaro.PickerOptions[];
 }
 /**
  * @module getCodeToText

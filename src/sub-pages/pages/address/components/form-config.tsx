@@ -14,9 +14,9 @@ export default function FormConfig(props: FormConfig) {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [pickerTitle, setPickerTitle] = useState('请选择城市');
-  const [pickerValue, setPickerValue] = useState<Array<number | string>>([]);
+  const [, setPickerValue] = useState<Array<number | string>>([]);
 
-  const onConfirm = (chooseData: INutuiTaro.PickerOption[], values: Array<number | string>) => {
+  const onConfirm = (chooseData: INutuiTaro.PickerOptions[], values: Array<number | string>) => {
     console.log(`values----->：`, values);
     console.log(`chooseData----->：`, chooseData);
     const text = chooseData.map((item) => item.text).join('');
@@ -64,8 +64,8 @@ export default function FormConfig(props: FormConfig) {
           required
           rules={[
             {
-              validator: () => {
-                return pickerValue?.length <= 0;
+              validator: (_, value) => {
+                return value?.length <= 0;
               },
               message: '请选择城市',
             },
@@ -101,11 +101,9 @@ export default function FormConfig(props: FormConfig) {
       <Picker
         visible={visible}
         title={pickerTitle}
-        // @ts-ignore
         options={option}
         onClose={onClose}
-        // @ts-ignore
-        onConfirm={(list: INutuiTaro.PickerOption[], values) => onConfirm(list, values)}
+        onConfirm={(list: INutuiTaro.PickerOptions[], values) => onConfirm(list, values)}
       />
     </>
   );

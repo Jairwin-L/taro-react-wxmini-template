@@ -1,6 +1,4 @@
-# taro-react-wxmini-template
-
-taro-react 微信小程序模版
+# taro-react-wxmini-template 小程序模版
 
 ## Usage
 
@@ -15,6 +13,10 @@ Run
 ```bash
 pnpm dev
 ```
+
+## repo
+
+https://github.com/Jairwin-L/taro-react-wxmini-template
 
 ## UI 组件库
 

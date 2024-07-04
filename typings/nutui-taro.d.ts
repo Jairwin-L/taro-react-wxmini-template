@@ -1,11 +1,7 @@
+import { type PickerOption } from '@nutui/nutui-react-taro';
+
 declare namespace INutuiTaro {
-  interface PickerOption extends ProvinceOption {
-    text?: string;
-    value?: string;
-    children?: PickerOption[];
-    disabled?: string;
-    className?: string | number;
-  }
+  type PickerOptions = PickerOption & ProvinceOption;
   interface ProvinceOption {
     name?: string;
     code?: string;
@@ -13,3 +9,5 @@ declare namespace INutuiTaro {
     children?: PickerOption[];
   }
 }
+export = INutuiTaro;
+export as namespace INutuiTaro;
