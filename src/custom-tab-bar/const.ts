@@ -24,6 +24,3 @@ export const TAB_BARS = [
     label: '账户',
   },
 ];
-
-export const COLOR = '#000';
-export const SELECTED_COLOR = '#dc143c';

@@ -3,7 +3,7 @@ import { CoverView, CoverImage } from '@tarojs/components';
 import { TAB_BARS } from './const';
 import './index.scss';
 
-export default function App() {
+export default function CustomTabBar() {
   const selectedValue = useRouter().path.split('/').filter(Boolean)[1];
   const onSwitchTab = (item) => {
     if (item.value === selectedValue) return;

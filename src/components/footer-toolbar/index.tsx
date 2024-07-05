@@ -1,8 +1,7 @@
 import { View } from '@tarojs/components';
-import React from 'react';
 import './index.scss';
 
-function FooterToolbar(props: IFooterToolbar) {
+export default function FooterToolbar(props: IFooterToolbar) {
   const { className = '', placeholderClassName = '', children } = props;
   return (
     <>
@@ -11,5 +10,3 @@ function FooterToolbar(props: IFooterToolbar) {
     </>
   );
 }
-
-export default FooterToolbar;

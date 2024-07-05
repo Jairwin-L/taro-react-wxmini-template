@@ -1,9 +1,13 @@
+:root,
 page {
   background: #fafbfc;
   .nut-empty {
     background: #fafbfc;
   }
-  --nutui-button-primary-color: #1677ff;
+  .nut-button-primary {
+    background: $primary;
+    color: $white;
+  }
 }
 /* 引入第三方或自定义的字体图标样式 */
 @font-face {
