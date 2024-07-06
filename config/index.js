@@ -1,3 +1,5 @@
+import { getAlias } from './utils';
+
 const config = {
   projectName: 'taro-react-wxmini-template',
   designWidth: 750,
@@ -57,12 +59,18 @@ const config = {
     optimizeMainPackage: {
       enable: true,
     },
-    // prerender: {
-    //   match: ['pages/**/**', 'sub-pages/pages/**/**'], // 所有以 `pages/shop/` 开头的页面都参与 prerender
-    // },
+    prerender: {
+      match: ['pages/**/**', 'sub-pages/pages/**/**'], // 所有以 `pages/shop/` 开头的页面都参与 prerender
+    },
     // TODO:可绕过，也可以找出
     miniCssExtractPluginOption: {
       ignoreOrder: true,
+    },
+    alias: {
+      '@/components': getAlias('components'),
+      '@/utils': getAlias('utils'),
+      '@/constants': getAlias('constants'),
+      '@/api': getAlias('api'),
     },
     postcss: {
       pxtransform: {

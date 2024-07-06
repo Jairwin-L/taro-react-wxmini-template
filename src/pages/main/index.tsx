@@ -1,8 +1,8 @@
 import { View, Image } from '@tarojs/components';
 import { Button, Swiper } from '@nutui/nutui-react-taro';
-import { CustomTabbarPlaceholder, Icon, PageLayout } from '../../components';
+import { CustomTabbarPlaceholder, Icon, PageLayout } from '@/components';
 import useModel from './model';
-import { subPageNavigate } from '../../utils/navigate';
+import { subPageNavigate } from '@/utils/navigate';
 import './index.scss';
 
 export default function Main() {

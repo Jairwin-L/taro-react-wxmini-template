@@ -1,7 +1,7 @@
 import { CellGroup, Cell, Avatar } from '@nutui/nutui-react-taro';
-import { CustomTabbarPlaceholder, Icon } from '../../components';
-import { subPageNavigate } from '../../utils';
-import { CELL_LIST } from '../../constants';
+import { CustomTabbarPlaceholder, Icon } from '@/components';
+import { subPageNavigate } from '@/utils';
+import { CELL_LIST } from '@/constants';
 import './index.scss';
 
 export default function account() {

@@ -1,10 +1,10 @@
 import { showModal } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { Empty, Button } from '@nutui/nutui-react-taro';
-import { navigate } from '../../../utils';
-import { AutoCenter, FooterToolbar, PageLayout } from '../../../components';
-import { getCodeToText } from '../../../utils/cascade-data';
-import { del } from '../../../api/modules/address';
+import { navigate } from '@/utils';
+import { AutoCenter, FooterToolbar, PageLayout } from '@/components';
+import { getCodeToText } from '@/utils/cascade-data';
+import { del } from '@/api/modules/address';
 import useModel from './model';
 import './index.scss';
 

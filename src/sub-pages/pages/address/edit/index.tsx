@@ -1,5 +1,5 @@
 import { useQueryString } from '../../../../hooks';
-import { PageLayout } from '../../../../components';
+import { PageLayout } from '@/components';
 import useModel from './model';
 import FormConfig from '../components/form-config';
 

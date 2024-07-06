@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { showToast, showModal } from '@tarojs/taro';
 import { View, Text, Image } from '@tarojs/components';
-import { PageLayout, FooterToolbar, CustomTabbarPlaceholder } from '../../components';
+import { PageLayout, FooterToolbar, CustomTabbarPlaceholder } from '@/components';
 import { InputNumber, Swipe, Button } from '@nutui/nutui-react-taro';
 import useModel from './model';
 import './index.scss';
-import { getCustomTabbarClass } from '../../utils';
+import { getCustomTabbarClass } from '@/utils';
 
 export default function Shop() {
   const customTabbarClass = getCustomTabbarClass();

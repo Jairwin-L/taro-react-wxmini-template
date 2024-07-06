@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View, Image } from '@tarojs/components';
 import { Tabs } from '@nutui/nutui-react-taro';
-import { PageLayout, CustomTabbarPlaceholder } from '../../components';
+import { PageLayout, CustomTabbarPlaceholder } from '@/components';
 import useModel from './model';
 import './index.scss';
 
