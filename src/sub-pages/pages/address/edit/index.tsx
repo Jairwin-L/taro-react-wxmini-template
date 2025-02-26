@@ -3,7 +3,7 @@ import { PageLayout } from '@/components';
 import useModel from './model';
 import FormConfig from '../components/form-config';
 
-export default function AddressEdit() {
+export default function Page() {
   const id = useQueryString<QueryStringKey>('id');
   const model = useModel();
 

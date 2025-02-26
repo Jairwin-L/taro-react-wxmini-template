@@ -8,7 +8,7 @@ import { del } from '@/api/modules/address';
 import useModel from './model';
 import './index.scss';
 
-export default function Address() {
+export default function Page() {
   const model = useModel();
   const onAdd = () => {
     navigate('address/add');

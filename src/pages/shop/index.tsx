@@ -7,7 +7,7 @@ import useModel from './model';
 import './index.scss';
 import { getCustomTabbarClass } from '@/utils';
 
-export default function Shop() {
+export default function Page() {
   const customTabbarClass = getCustomTabbarClass();
   const model = useModel();
   const [allSelected, setAllSelected] = useState<boolean>(false);

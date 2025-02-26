@@ -4,7 +4,7 @@ import { subPageNavigate } from '@/utils';
 import { CELL_LIST } from '@/constants';
 import './index.scss';
 
-export default function account() {
+export default function Page() {
   const onCell = (item: IBaseSelectOption) => {
     subPageNavigate(item.value, {
       id: 123123123123,

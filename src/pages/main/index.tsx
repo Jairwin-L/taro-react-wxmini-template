@@ -5,7 +5,7 @@ import useModel from './model';
 import { subPageNavigate } from '@/utils/navigate';
 import './index.scss';
 
-export default function Main() {
+export default function Page() {
   const model = useModel();
   const { data } = model;
   const onGoPay = () => {

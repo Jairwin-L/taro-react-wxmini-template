@@ -1,5 +1,5 @@
 import FormConfig from '../components/form-config';
 
-export default function AddressAdd() {
+export default function Page() {
   return <FormConfig />;
 }

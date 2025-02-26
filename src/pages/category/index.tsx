@@ -5,7 +5,7 @@ import { PageLayout, CustomTabbarPlaceholder } from '@/components';
 import useModel from './model';
 import './index.scss';
 
-export default function Category() {
+export default function Page() {
   const model = useModel();
   const [tabValue, setTabValue] = useState<string | number | undefined>('0');
   const onTabsChange = (value) => {

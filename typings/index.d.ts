@@ -18,6 +18,7 @@ type IPagePreFix =
   | 'address/edit'
   | 'login'
   | 'register'
-  | 'pay';
+  | 'pay'
+  | 'demo';
 
 type IEnvVersion = 'release' | 'trial' | 'develop';

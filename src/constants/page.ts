@@ -15,6 +15,7 @@ export const SUB_PAGES: string[] = [
   makePageUrl('pay'),
   makePageUrl('login'),
   makePageUrl('register'),
+  makePageUrl('demo'),
 ];
 
 export const TAB_BARS: Array<{

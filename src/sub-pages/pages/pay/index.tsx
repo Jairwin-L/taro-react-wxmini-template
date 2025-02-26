@@ -2,7 +2,7 @@ import { Button } from '@nutui/nutui-react-taro';
 import './index.scss';
 import useModel from './model';
 
-export default function Pay() {
+export default function Page() {
   const { onRefetch } = useModel();
   const onPay = () => {
     if (onRefetch) {
