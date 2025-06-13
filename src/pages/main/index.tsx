@@ -11,6 +11,9 @@ export default function Page() {
   const onGoPay = () => {
     subPageNavigate('pay');
   };
+  const onGoDemo = () => {
+    subPageNavigate('demo');
+  };
   return (
     <>
       <PageLayout useModel={model}>
@@ -33,6 +36,9 @@ export default function Page() {
         <Icon name="main" />
         <Button type="primary" onClick={onGoPay}>
           支付页
+        </Button>
+        <Button type="primary" onClick={onGoDemo}>
+          演示页
         </Button>
         <View>
           {data?.list?.map((item: IQueryBiz.ListItem) => {

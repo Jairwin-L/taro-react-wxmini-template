@@ -4,7 +4,7 @@ import { getSystemInfoSync, getAccountInfoSync } from '@tarojs/taro';
  * @module getSystemInfo
  * @description 获取系统信息
  */
-function getSystemInfo() {
+export function getSystemInfo() {
   try {
     const res = getSystemInfoSync();
     return res;
@@ -12,6 +12,7 @@ function getSystemInfo() {
     console.log(`getSystemInfoSync:error----->：`, error);
     return {
       platform: 'ios',
+      bluetoothAuthorized: false,
     };
   }
 }
@@ -40,4 +41,4 @@ function getEnvVersion(): IEnvVersion {
   }
 }
 
-export { getSystemInfo, getCustomTabbarClass, getEnvVersion };
+export { getCustomTabbarClass, getEnvVersion };
